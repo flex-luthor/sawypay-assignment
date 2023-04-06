@@ -6,11 +6,18 @@ interface DropdowMenuInterface {
   active?: string;
   setActive: (arg0: string) => void;
   data: string[];
+  activeIndex: number;
+  setActiveIndex: (arg0: number) => void;
 }
 
-const DropdownMenu = ({ active, setActive, data }: DropdowMenuInterface) => {
+const DropdownMenu = ({
+  active,
+  setActive,
+  data,
+  activeIndex,
+  setActiveIndex,
+}: DropdowMenuInterface) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const index = data.findIndex((el) => {
