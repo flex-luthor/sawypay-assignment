@@ -42,6 +42,7 @@ const DropdownMenu = ({ active, setActive, data }: DropdowMenuInterface) => {
           {data.map((el, i) => {
             return (
               <DropdownItem
+                key={i}
                 label={el}
                 setActive={(label) => {
                   setIsOpen(false);
