@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { PropsWithChildren } from "react";
 import { Meta } from "./Meta";
 
