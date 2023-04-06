@@ -23,6 +23,8 @@ export const TicketCard = ({
 
   return (
     <div className="bg-gray-800  w-full max-w-[1000px] ">
+      <ProgressBar activeIndex={activeIndex} totalIndex={dropDownData.length} />
+
       <div className="bg-gray-600/50 p-8 ">
         <div className="flex justify-between items-left md:items-center flex-col md:flex-row">
           <div>
@@ -46,7 +48,6 @@ export const TicketCard = ({
           {description}
         </div>
       </div>
-      <ProgressBar activeIndex={activeIndex} totalIndex={dropDownData.length} />
     </div>
   );
 };
