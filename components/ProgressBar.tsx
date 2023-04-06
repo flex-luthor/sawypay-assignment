@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-export const ProgressBar = ({ activeIndex, totalIndex }) => {
+export const ProgressBar = ({
+  activeIndex,
+  totalIndex,
+}: {
+  activeIndex: number;
+  totalIndex: number;
+}) => {
   const [width, setWidth] = useState("0");
   useEffect(() => {
     const widthNum = activeIndex + 1;

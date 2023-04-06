@@ -22,8 +22,8 @@ export const TicketCard = ({
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="bg-gray-800">
-      <div className="bg-gray-600/50 w-full max-w-[1000px] p-8 ">
+    <div className="bg-gray-800  w-full max-w-[1000px] ">
+      <div className="bg-gray-600/50 p-8 ">
         <div className="flex justify-between items-left md:items-center flex-col md:flex-row">
           <div>
             <div className="text-2xl font-bold text-purple-500">
