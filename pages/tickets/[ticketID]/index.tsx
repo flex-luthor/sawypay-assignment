@@ -4,6 +4,7 @@ import { TicketCard } from "../../../components/TicketCard";
 import axios from "axios";
 import { ErrorState } from "@/components/ErrorState";
 import { Loading } from "@/components/Loading";
+import { getTicket, updateTicket } from "@/utils/api";
 
 interface TicketInterface {
   data: {
@@ -22,16 +23,12 @@ const Ticket = ({ data }: TicketInterface) => {
   const updateStatus = async (status: string) => {
     setLoading(true);
     try {
-      const res = await axios.post(`${server}/api/updateTicketByID`, {
-        ticketID: data?.ticketID,
-        status: status,
-      });
+      await updateTicket(data?.ticketID, status);
       setStatus(status);
-      setTimeout(() => {
-        setLoading(false);
-      }, 400);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -54,14 +51,11 @@ const Ticket = ({ data }: TicketInterface) => {
 };
 
 export async function getServerSideProps(context: any) {
-  const res = await fetch(`${server}/api/getTicketByID`, {
-    method: "POST",
-    body: JSON.stringify({ ticketID: context.query.ticketID }),
-  });
-  const data = await res.json();
+  const res = await getTicket(context.query.ticketID);
+  const data = res.data;
   return {
     props: {
-      data: data,
+      data,
     },
   };
 }
