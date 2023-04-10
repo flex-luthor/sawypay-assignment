@@ -12,7 +12,6 @@ export const ProgressBar = ({
     const widthNum = activeIndex + 1;
     const widthDenom = totalIndex;
     setWidth(`${widthNum}/${widthDenom}`);
-    console.log(`${widthNum}/${widthDenom}`);
   }, [activeIndex, totalIndex]);
 
   return (
