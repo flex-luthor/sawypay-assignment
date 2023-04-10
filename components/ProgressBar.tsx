@@ -18,12 +18,12 @@ export const ProgressBar = ({
     <div
       className={
         width === "1/4"
-          ? "h-6 bg-green-500 w-1/4"
+          ? "h-6 bg-green-500 w-1/4 transition-all"
           : width === "2/4"
-          ? "h-6 bg-green-500 w-1/2"
+          ? "h-6 bg-green-500 w-1/2 transition-all"
           : width === "3/4"
-          ? "h-6 bg-green-500 w-3/4"
-          : "h-6 bg-green-500 w-full"
+          ? "h-6 bg-green-500 w-3/4 transition-all"
+          : "h-6 bg-green-500 w-full transition-all"
       }
     ></div>
   );
