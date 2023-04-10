@@ -26,7 +26,7 @@ const Ticket = ({ data }: TicketInterface) => {
       await updateTicket(data?.ticketID, status);
       setStatus(status);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     } finally {
       setLoading(false);
     }
@@ -51,13 +51,23 @@ const Ticket = ({ data }: TicketInterface) => {
 };
 
 export async function getServerSideProps(context: any) {
-  const res = await getTicket(context.query.ticketID);
-  const data = res.data;
-  return {
-    props: {
-      data,
-    },
-  };
+  try {
+    const res = await getTicket(context.query.ticketID);
+    const data = res.data;
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error: any) {
+    return {
+      props: {
+        data: {
+          error: JSON.parse(JSON.stringify(error?.response?.data?.error)),
+        },
+      },
+    };
+  }
 }
 
 export default Ticket;
