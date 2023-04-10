@@ -7,12 +7,20 @@ interface DataInterface {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const mongoClient = await clientPromise;
+  try {
+    const mongoClient = await clientPromise;
 
-  const tickets = await mongoClient.db().collection("tickets").find().toArray();
+    const tickets = await mongoClient
+      .db()
+      .collection("tickets")
+      .find()
+      .toArray();
 
-  const data = {
-    tickets: [tickets],
-  };
-  res.status(200).json(data);
+    const data = {
+      tickets: [tickets],
+    };
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(400).json({ error: error });
+  }
 };
